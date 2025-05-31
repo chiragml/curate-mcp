@@ -19,8 +19,16 @@ class LinkedInConfig:
     scrape_delay: int = 2  # Delay in seconds between actions
 
 @dataclass
+class OverleafConfig:
+    """Configuration for Overleaf API."""
+    
+    email: Optional[str] = None
+    password: Optional[str] = None
+
+@dataclass
 class AppConfig:
     "Main configuration class for the application."
     # chrome: ChromeConfig = field(default_factory=ChromeConfig)
     linkedIn: LinkedInConfig = field(default_factory=LinkedInConfig)
+    overleaf: OverleafConfig = field(default_factory=OverleafConfig)
 

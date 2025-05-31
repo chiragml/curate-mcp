@@ -7,6 +7,7 @@ import dotenv
 import logging
 import time
 import sys
+from customize import customize
 # Configure logging to stderr
 logging.basicConfig(
     level=logging.DEBUG,
@@ -39,16 +40,17 @@ app = FastMCP("curate-mcp")
 OVERLEAFCRED = None
 
 scrape_posting(app, get_logger())
+customize(app, get_logger())
 
 @app.tool()
 async def close_session() -> Dict[str, Any]:
     """Close the current browser session and clean up resources."""
-    session_id = "default"  # Using the same default session
-
-    if session_id in active_drivers:
+    session_id = ["default", "overleaf_auth"]  # Using the same default session
+    for sid in active_drivers:
        reset_config()  # Reset configuration to default
        time.sleep(1)  # Allow time for reset
-       close_driver(session_id)
+       if sid in active_drivers:
+           close_driver(session_id)
     else:
         return {
             "status": "warning",
@@ -74,7 +76,10 @@ def customize(content: str, login_cred = OVERLEAFCRED) -> str:
     --------------------------
     '''
     # Tool call for customizing resume based on scraped data
-    raise NotImplementedError("Customization functionality is not implemented yet.")
+    # raise NotImplementedError("Customization functionality is not implemented yet.")
+    
+    return "  "
+
 
 @app.prompt()
 def __validate__(resume: str, job: dict) -> str:

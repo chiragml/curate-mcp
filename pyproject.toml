@@ -7,7 +7,10 @@ requires-python = ">=3.13"
 dependencies = [
     "linkedin-scraper>=2.11.5",
     "mcp[cli]>=1.9.1",
+    "pyoverleaf[cli]>=0.1.4",
     "python-dotenv>=1.1.0",
     "selenium>=4.33.0",
+    "setuptools>=80.9.0",
+    "undetected-chromedriver>=3.5.5",
     "webdriver-manager>=4.0.2",
 ]

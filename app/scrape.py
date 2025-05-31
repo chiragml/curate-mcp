@@ -17,7 +17,7 @@ from drivers.chrome import get_or_create_driver, close_driver
 from config import get_config, conf_logger
 import time
 
-def scrape_posting(mcp: FastMCP, logger: logging.Logger) -> Dict[str, Any]:
+def scrape_posting(mcp: FastMCP, logger: logging.Logger) -> None:
     """
     Scrape a job posting from LinkedIn.
 
